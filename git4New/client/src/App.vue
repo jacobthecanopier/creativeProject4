@@ -16,16 +16,17 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/"
-              >Home <span class="sr-only">(current)</span></a
-            >
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/experiences">Experiences</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/reviews">Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin-view">Submit</a>
           </li>
         </ul>
       </div>

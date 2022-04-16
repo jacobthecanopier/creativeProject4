@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import ExperienceView from "../views/ExperienceView.vue";
 import ReviewsView from "../views/ReviewsView.vue";
+import AdminView from "../views/AdminView.vue";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: "/reviews",
     name: "reviews",
     component: ReviewsView,
+  },
+  {
+    path: "/admin-view",
+    name: "adminView",
+    component: AdminView,
   },
 ];
 

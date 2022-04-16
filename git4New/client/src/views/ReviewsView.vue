@@ -2,25 +2,28 @@
   <div>
     <div class="reviews-container">
       <div
-        class="company-container review"
+        class="review-container review"
         v-for="review in reviews"
         :key="review.id"
       >
         <div class="about-me-text review">
           <div class="review-profile">
             <span class="about-me-title">{{ review.name }}</span>
-            <span v-if="review.position" class="about-me-reviewer">
-              - {{ review.position }}</span
-            >
           </div>
           <hr />
           <div class="company-duration">"{{ review.text }}"</div>
-          <hr />
-          <div class="about-me-reviewer">- {{ review.created }}</div>
+          <hr v-if="review.position" />
+          <div
+            style="display: flex; justify-content: center"
+            v-if="review.position"
+            class="about-me-reviewer"
+          >
+            - {{ review.position }}
+          </div>
         </div>
-        <!-- <div v>
-          <img class="review-image" src="" alt="" />
-        </div> -->
+        <div v-if="review.image">
+          <img class="review-image" :src="review.image" alt="" />
+        </div>
       </div>
     </div>
   </div>
@@ -33,24 +36,36 @@
 // optional photo
 
 // eslint-disable-next-line quotes
-const FETCH_URL = "http://localhost:1234/reviews";
+import axios from "axios";
 export default {
-  // eslint-disable-next-line quotes
   name: "ReviewsView",
-  data: () => ({
-    reviews: Array,
-  }),
-  mounted() {
-    fetch(FETCH_URL)
-      .then((response) => response.json())
-      .then((result) => {
-        this.reviews = result;
-      });
+  data() {
+    return {
+      reviews: [],
+    };
+  },
+  created() {
+    this.getReviews();
+  },
+  methods: {
+    async getReviews() {
+      try {
+        let response = await axios.get("/api/reviews");
+        this.reviews = response.data;
+        return true;
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 };
 </script>
 
 <style>
+.review-image {
+  max-width: 250px;
+}
+
 .review-profile {
   display: flex;
   align-items: center;
@@ -86,6 +101,15 @@ body {
   margin-bottom: 50px;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  min-width: 800px;
+}
+
+.review-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-evenly;
   align-items: center;
   min-width: 800px;
 }

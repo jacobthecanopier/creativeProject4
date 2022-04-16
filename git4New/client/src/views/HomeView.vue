@@ -25,7 +25,7 @@
           Product Marketing.
         </div>
       </div>
-      <div>
+      <div style="display: flex; justify-content: center">
         <img class="home-page-picture" src="../assets/IMG_8839.jpg" alt="" />
       </div>
 
